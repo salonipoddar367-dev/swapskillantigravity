@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SkillSwap | Teach to Learn, Learn to Grow</title>
+  <meta name="description" content="Exchange your skills for the skills you want to learn. A modern, peer-to-peer knowledge swap platform where everyone teaches, learns, and gains." />
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       Site Header / Navigation
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 3 4 4-4 4"></path>
+            <path d="M20 7H4"></path>
+            <path d="m8 21-4-4 4-4"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </div>
+        <span>SkillSwap<span class="logo-badge">P2P</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#explore" class="nav-link">Explore Swaps</a></li>
+          <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+          <li><a href="#matchmaker" class="nav-link">Match Calculator</a></li>
+          <li><a href="#stories" class="nav-link">Success Stories</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="openMySwapsBtn" class="btn-my-swaps" title="View your pending and active swaps">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>My Swaps</span>
+          <span id="navProposalBadge" class="swap-badge-count">1</span>
+        </button>
+
+        <button id="openPostModalBtn" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span>Post a Swap</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Hero Section
+       ========================================================================= -->
+  <section class="hero-section">
+    <div class="container hero-content">
+      <div class="hero-pill">
+        <span class="dot"></span>
+        <span>The Zero-Dollar Knowledge Economy</span>
+      </div>
+
+      <h1 class="hero-title">
+        Exchange your skills.<br />
+        <span class="gradient-text">Everyone teaches. Everyone gains.</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Swap the skills you have mastered for the skills you desire to learn. Direct 1-on-1 peer exchange with no tuition fees, subscriptions, or barriers to growth.
+      </p>
+
+      <!-- Dual Search Component -->
+      <div class="hero-search-card">
+        <div class="search-input-group learn">
+          <div class="search-label-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+          </div>
+          <div class="search-input-box">
+            <span class="search-mini-label">I want to learn</span>
+            <input type="text" id="heroLearnInput" class="search-input-field" placeholder="e.g. Italian, Python, UI Design" />
+          </div>
+        </div>
+
+        <div class="search-divider-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 3 4 4-4 4"></path>
+            <path d="M20 7H4"></path>
+            <path d="m8 21-4-4 4-4"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </div>
+
+        <div class="search-input-group teach">
+          <div class="search-label-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <div class="search-input-box">
+            <span class="search-mini-label">I can teach</span>
+            <input type="text" id="heroTeachInput" class="search-input-field" placeholder="e.g. React, Guitar, SEO" />
+          </div>
+        </div>
+
+        <button id="heroSearchBtn" class="btn-primary hero-search-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <span>Find Matches</span>
+        </button>
+      </div>
+
+      <!-- Quick Trending Tags -->
+      <div class="hero-quick-tags">
+        <span>Trending Swaps:</span>
+        <button class="quick-tag-chip" data-skill="React & Next.js">React & Next.js</button>
+        <button class="quick-tag-chip" data-skill="Figma & Design Systems">Figma</button>
+        <button class="quick-tag-chip" data-skill="Mandarin Chinese">Mandarin</button>
+        <button class="quick-tag-chip" data-skill="Financial Modeling">Financial Modeling</button>
+        <button class="quick-tag-chip" data-skill="Ableton Live">Ableton Audio</button>
+        <button class="quick-tag-chip" data-skill="Docker & Kubernetes">DevOps</button>
+      </div>
+
+      <!-- Live Stats Row -->
+      <div class="hero-stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">14,200+</span>
+          <span class="stat-label">Knowledge Swaps Completed</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">4.96 / 5.0</span>
+          <span class="stat-label">Average Session Rating</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">$0.00</span>
+          <span class="stat-label">Platform Tuition Fee</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">48+</span>
+          <span class="stat-label">Countries Represented</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       How It Works
+       ========================================================================= -->
+  <section id="how-it-works" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Direct Peer Exchange</div>
+        <h2 class="section-title">How SkillSwap Works</h2>
+        <p class="section-desc">You don’t pay with cash. You pay with the knowledge you already possess.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <span class="step-number">01</span>
+          <div class="step-icon-wrapper teach">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+          </div>
+          <h3 class="step-heading">1. List What You Teach & Need</h3>
+          <p class="step-detail">
+            Specify the skills you feel confident mentoring in, alongside the topics or crafts you are excited to learn.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">02</span>
+          <div class="step-icon-wrapper match">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="m10 15 5-3-5-3v6Z"></path>
+            </svg>
+          </div>
+          <h3 class="step-heading">2. Propose a Reciprocal Swap</h3>
+          <p class="step-detail">
+            Find peers whose learning goals complement yours. Propose a balanced session (e.g. 1 hour of React for 1 hour of Italian).
+          </p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-number">03</span>
+          <div class="step-icon-wrapper grow">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3 class="step-heading">3. Meet, Share & Level Up</h3>
+          <p class="step-detail">
+            Conduct virtual or local 1-on-1 sessions. Track your exchange hours, gain karma endorsements, and expand your career mastery.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Match Calculator / Simulator Section
+       ========================================================================= -->
+  <section id="matchmaker" class="container">
+    <div class="match-widget-section">
+      <div class="match-widget-inner">
+        <h2 class="match-widget-title">Smart Match Calculator</h2>
+        <p class="match-widget-subtitle">Select your skills to discover immediate reciprocal swap matches in our network.</p>
+        
+        <div class="match-form">
+          <div class="match-select-box">
+            <label for="matchmakerTeachSelect">I Can Teach</label>
+            <select id="matchmakerTeachSelect">
+              <option value="">-- Choose skill you teach --</option>
+              <option value="React & Next.js">React & Next.js</option>
+              <option value="Figma & Design Systems">Figma & Design Systems</option>
+              <option value="Mandarin Chinese">Mandarin Chinese</option>
+              <option value="Financial Modeling">Financial Modeling</option>
+              <option value="Ableton Live & Production">Ableton Live & Production</option>
+              <option value="Docker & Kubernetes">Docker & Kubernetes</option>
+              <option value="High-Performance Nutrition">Nutrition & Health</option>
+              <option value="Blender 3D Modeling">Blender 3D Modeling</option>
+              <option value="Spanish (All Levels)">Spanish</option>
+            </select>
+          </div>
+
+          <div class="match-select-box">
+            <label for="matchmakerLearnSelect">I Want To Learn</label>
+            <select id="matchmakerLearnSelect">
+              <option value="">-- Choose skill you want --</option>
+              <option value="Italian (Conversational)">Italian</option>
+              <option value="Python for Data">Python for Data</option>
+              <option value="SEO & Content Marketing">SEO & Marketing</option>
+              <option value="Acoustic Guitar">Acoustic Guitar</option>
+              <option value="Social Media Growth">Social Media Growth</option>
+              <option value="French (A2-B1)">French</option>
+              <option value="Figma Basics">Figma Basics</option>
+              <option value="Swift / iOS Development">Swift / iOS Dev</option>
+              <option value="React & JavaScript">React & JS</option>
+            </select>
+          </div>
+
+          <button id="runMatchmakerBtn" class="match-btn">Calculate Match</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Marketplace Explorer Grid
+       ========================================================================= -->
+  <section id="explore" class="marketplace-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Active Community</div>
+        <h2 class="section-title">Explore Skill Swappers</h2>
+        <p class="section-desc">Connect with motivated professionals, creators, and hobbyists ready for mutual growth.</p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div id="categoryTabs" class="category-filter-bar">
+        <!-- Injected dynamically via JS -->
+      </div>
+
+      <!-- Controls & Count Bar -->
+      <div class="feed-controls-bar">
+        <div class="feed-count-summary">
+          Showing <strong id="feedCountNum">0</strong> active swappers
+        </div>
+
+        <div class="feed-sort-wrapper">
+          <label for="feedSortSelect">Sort by:</label>
+          <select id="feedSortSelect" class="feed-sort-select">
+            <option value="rating">Highest Rated</option>
+            <option value="swaps">Most Swaps Completed</option>
+            <option value="name">Name (A-Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Swaps Grid Cards Container -->
+      <div id="swapsGrid" class="swaps-grid">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Success Stories / Testimonials
+       ========================================================================= -->
+  <section id="stories" class="section stories-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Real Exchanges</div>
+        <h2 class="section-title">Swapping Powers Real Careers</h2>
+        <p class="section-desc">See how community members unlocked new career trajectories through fair knowledge exchange.</p>
+      </div>
+
+      <div class="stories-grid">
+        <div class="story-card">
+          <div class="story-swap-pair">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Sarah" class="pair-avatar" />
+            <div class="pair-swap-icon">⇄</div>
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Liam" class="pair-avatar" />
+          </div>
+          <p class="story-quote">
+            "I taught Marcus Next.js server components in exchange for 4 weeks of Brand Identity critique. He overhauled my portfolio, and I helped him launch his SaaS."
+          </p>
+          <div>
+            <div class="story-author">Elena (Frontend) & Marcus (Designer)</div>
+            <div class="story-outcome">Completed 16 hours of reciprocal swap</div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-swap-pair">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80" alt="Sofia" class="pair-avatar" />
+            <div class="pair-swap-icon">⇄</div>
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="David" class="pair-avatar" />
+          </div>
+          <p class="story-quote">
+            "I needed Mandarin coaching for an investor meeting in Singapore. In exchange, I walked Sofia through startup cap tables. Neither of us paid a single dime."
+          </p>
+          <div>
+            <div class="story-author">David (Venture) & Sofia (Mandarin Coach)</div>
+            <div class="story-outcome">Closed angel round + achieved HSK 3 fluency</div>
+          </div>
+        </div>
+
+        <div class="story-card">
+          <div class="story-swap-pair">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Camila" class="pair-avatar" />
+            <div class="pair-swap-icon">⇄</div>
+            <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=100&auto=format&fit=crop&q=80" alt="Liam" class="pair-avatar" />
+          </div>
+          <p class="story-quote">
+            "We met every Sunday for 90 minutes. 45 minutes of conversational Spanish, then 45 minutes of AWS Kubernetes deployment fundamentals. The accountability was unbeatable."
+          </p>
+          <div>
+            <div class="story-author">Camila (Translator) & Liam (DevOps)</div>
+            <div class="story-outcome">Completed 24 weekly sessions</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Frequently Asked Questions
+       ========================================================================= -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Got Questions?</div>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">Everything you need to know about reciprocal peer-to-peer knowledge swaps.</p>
+      </div>
+
+      <div class="faq-container">
+        <div class="faq-item open">
+          <button class="faq-question">
+            <span>Is SkillSwap really 100% free?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Yes! SkillSwap operates entirely on the reciprocal currency of knowledge. You teach a peer for 1 hour in exchange for 1 hour of their mentorship. There are no subscription fees, escrow payments, or hidden charges.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What if our skill levels or experience differ?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Skill levels don't have to be identical—only mutual respect and enthusiasm matter! For example, an expert software developer learning beginner guitar is a natural match for a guitarist wanting to learn basic coding. You both agree on expectations before kicking off.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do we schedule and conduct our sessions?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Once you propose a swap and the member accepts, you coordinate convenient times via Google Meet, Zoom, or Discord. Many partners choose weekly 60-minute calls split 30/30 or alternating teaching roles every week.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What happens if a swap partner doesn't show up?</span>
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="faq-answer">
+            Our platform features community accountability. Members build a reputation score based on punctuality and verified exchanges. You can cancel any swap at any time with one click from your "My Swaps" drawer.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Call To Action Banner
+       ========================================================================= -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Ready to swap your knowledge and grow?</h2>
+        <p>Join thousands of professionals trading expertise today. Post your swap profile in under 2 minutes.</p>
+        <button id="ctaPostBtn" class="btn-white">Create Your Swap Listing</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       Footer
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-logo" style="color: #fff;">
+            <div class="logo-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m16 3 4 4-4 4"></path>
+                <path d="M20 7H4"></path>
+                <path d="m8 21-4-4 4-4"></path>
+                <path d="M4 17h16"></path>
+              </svg>
+            </div>
+            <span>SkillSwap</span>
+          </div>
+          <p>
+            The modern reciprocal knowledge network. Unlock new horizons by teaching what you know and learning what you love.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="#explore">Tech & Coding</a></li>
+            <li><a href="#explore">Design & UX</a></li>
+            <li><a href="#explore">Foreign Languages</a></li>
+            <li><a href="#explore">Music & Audio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <ul class="footer-links">
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#matchmaker">Smart Matchmaker</a></li>
+            <li><a href="#stories">Success Stories</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="#">Code of Conduct</a></li>
+            <li><a href="#">Trust & Safety</a></li>
+            <li><a href="#">Exchange Guidelines</a></li>
+            <li><a href="#">Support Hub</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 SkillSwap Network. Built for mutual growth.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Exchange</a>
+          <a href="#">Cookie Preferences</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       Modal: Propose a Swap
+       ========================================================================= -->
+  <div id="proposeModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="proposeModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="proposeModalTitle" class="modal-title">Propose a Skill Swap</h3>
+        <button id="closeProposeModalBtn" class="modal-close-btn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="proposeForm">
+        <div class="modal-body">
+          <div id="targetPartnerPreview" class="propose-target-preview">
+            <!-- Populated dynamically -->
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="proposeOfferedSkill">What skill will you teach them in exchange? *</label>
+            <input type="text" id="proposeOfferedSkill" class="form-input" placeholder="e.g. Conversational French, Vue.js, Guitar" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="proposeHours">Proposed Frequency / Commitment *</label>
+            <select id="proposeHours" class="form-select" required>
+              <option value="1 hour / week">1 hour / week (Recommended)</option>
+              <option value="2 hours / week">2 hours / week (Intensive)</option>
+              <option value="1 session bi-weekly">1 session bi-weekly</option>
+              <option value="Single 90-min consultation">Single 90-min consultation</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="proposeMessage">Personal Introduction & Pitch *</label>
+            <textarea id="proposeMessage" class="form-textarea" rows="4" placeholder="Introduce yourself, your experience level, and how you envision dividing your sessions..." required></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelProposeBtn" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary">Send Swap Proposal</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Modal: Post a Swap (Create Listing)
+       ========================================================================= -->
+  <div id="postSwapModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="postModalTitle" class="modal-title">Post Your Swap Listing</h3>
+        <button id="closePostModalBtn" class="modal-close-btn" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="postSwapForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="postName">Your Full Name *</label>
+            <input type="text" id="postName" class="form-input" placeholder="e.g. Alex Morgan" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="postTitle">Your Professional Title / Role *</label>
+            <input type="text" id="postTitle" class="form-input" placeholder="e.g. Data Analyst & Python Enthusiast" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="postCategory">Primary Category *</label>
+            <select id="postCategory" class="form-select" required>
+              <option value="tech">Tech & Code</option>
+              <option value="design">Design & Creative</option>
+              <option value="languages">Languages</option>
+              <option value="business">Business & Growth</option>
+              <option value="music">Music & Audio</option>
+              <option value="wellness">Wellness & Lifestyle</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Skills You Teach (Type & press Enter or comma) *</label>
+            <div id="teachTagBox" class="tag-input-container">
+              <input type="text" id="teachTagInput" class="tag-input-field" placeholder="Type skill and press Enter..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Skills You Want to Learn (Type & press Enter or comma) *</label>
+            <div id="learnTagBox" class="tag-input-container">
+              <input type="text" id="learnTagInput" class="tag-input-field" placeholder="Type skill and press Enter..." />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="postBio">Short Bio & Mentoring Approach *</label>
+            <textarea id="postBio" class="form-textarea" rows="3" placeholder="Briefly describe your experience and teaching style..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="postAvailability">Availability & Timezone *</label>
+            <input type="text" id="postAvailability" class="form-input" placeholder="e.g. Weekends (UTC+1) • Virtual" required />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="cancelPostBtn" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary">Publish Swap</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Drawer: My Swaps / Activity Panel
+       ========================================================================= -->
+  <div id="mySwapsDrawer" class="drawer-backdrop" role="dialog" aria-modal="true">
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <h3 class="drawer-title">My Swap Dashboard</h3>
+        <button id="closeDrawerBtn" class="modal-close-btn" aria-label="Close drawer">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="drawer-content">
+        <!-- Karma Card -->
+        <div class="karma-score-card">
+          <div class="karma-info">
+            <h4>Karma / Swap Credit</h4>
+            <div class="karma-score">100%</div>
+            <div class="karma-ratio">1 Hour Taught = 1 Hour Learned</div>
+          </div>
+          <div style="font-size: 2.25rem;">✨</div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--slate-900);">
+            Active & Proposed Swaps (<span id="drawerCountNum">0</span>)
+          </h4>
+          <div id="drawerProposalsList" style="display: flex; flex-direction: column; gap: 0.85rem;">
+            <!-- Rendered by app.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
